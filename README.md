@@ -105,4 +105,4 @@ Do not sell, misuse, or use without giving credits.
 <h2 align="center">
   🌈✨ Thanks for using <span style="color:#00FFFF">FAHEEM-AI</span> ✨🌈
 </h2>
-<a><img src='https://i.imgur.com/LyHic3i.gif'/></a># REDZONE-MD
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>#
