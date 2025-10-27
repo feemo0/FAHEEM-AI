@@ -1,8 +1,11 @@
+<p align="center">
+<img src="Shaban/feature-bot.svg" alt="Feature Bot" width="900"/>
+
 
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
-«𝙁𝘼𝙃𝙀𝙀𝙈-𝘼𝙄»
+«𝙁𝘼𝙄𝙕𝘼𝙉 𝙅𝙐𝙏𝙏»
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 <h1 align="center">
   <img src="https://files.catbox.moe/snae53.jpg" alt="FAIZAN-AI" width="800" style="border-radius:25px;box-shadow:0 0 30px violet;"/>
@@ -51,7 +54,7 @@
 <a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
 ## 🚀 𝘿𝙀𝙋𝙇𝙊𝙔 𝙉𝙊𝙒
 <p align="center">
-  <a href="[https://dashboard.heroku.com/new?template=https://github.com/femo0/FAHEEM-AI?tab=readme-ov-file](https://dashboard.heroku.com/new?template=https://github.com/feemo0/FAHEEM-AI)">
+  <a href="https://dashboard.heroku.com/new?template=https://github.com/feemo0/FAHEEM-AI?tab=readme-ov-file">
     <img src="https://img.shields.io/badge/Deploy-Heroku-7952B3?style=for-the-badge&logo=heroku&logoColor=white" />
   </a>
 </p>
@@ -67,7 +70,7 @@
   <a href="https://whatsapp.com/channel/0029VbBdQyRBPzjUMvx8Fb2g">
     <img src="https://img.shields.io/badge/Join-Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
-  <a href="https://api.whatsapp.com/send?phone=+923408576674&text=➪𝐇𝐄𝐘𓆩🐍🍷🌹'">
+  <a href="https://api.whatsapp.com/send?phone=+61480853796&text=➪𝐇𝐄𝐘𓆩🐍🍷🌹'">
     <img src="https://img.shields.io/badge/Contact-Owner-ff0000?style=for-the-badge&logo=whatsapp&logoColor=white" />
   </a>
 </p>
@@ -102,4 +105,4 @@ Do not sell, misuse, or use without giving credits.
 <h2 align="center">
   🌈✨ Thanks for using <span style="color:#00FFFF">FAHEEM-AI</span> ✨🌈
 </h2>
-<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>#
+<a><img src='https://i.imgur.com/LyHic3i.gif'/></a>
