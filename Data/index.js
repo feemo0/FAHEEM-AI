@@ -1,131 +1,94 @@
-const fs = require('fs');
-const path = require('path');
+const axios = require('axios')
 
-// === ANTI-DELETE SETTINGS ===
-const antiDelPath = path.join(__dirname, 'antidel.json');
-let AntiDelDB = {};
-
-if (fs.existsSync(antiDelPath)) {
-  try {
-    AntiDelDB = JSON.parse(fs.readFileSync(antiDelPath, 'utf-8'));
-  } catch (e) {
-    AntiDelDB = {};
-  }
+const getBuffer = async(url, options) => {
+	try {
+		options ? options : {}
+		var res = await axios({
+			method: 'get',
+			url,
+			headers: {
+				'DNT': 1,
+				'Upgrade-Insecure-Request': 1
+			},
+			...options,
+			responseType: 'arraybuffer'
+		})
+		return res.data
+	} catch (e) {
+		console.log(e)
+	}
 }
 
-const initializeAntiDeleteSettings = () => {
-  AntiDelDB = {};
-  saveAntiDelDB();
-};
-
-const setAnti = (jid, value) => {
-  AntiDelDB[jid] = value;
-  saveAntiDelDB();
-};
-
-const getAnti = (jid) => {
-  return AntiDelDB[jid] || false;
-};
-
-const getAllAntiDeleteSettings = () => {
-  return { ...AntiDelDB };
-};
-
-const saveAntiDelDB = () => {
-  fs.writeFileSync(antiDelPath, JSON.stringify(AntiDelDB, null, 2));
-};
-
-// === STORE / MESSAGES ===
-const storePath = path.join(__dirname, 'store.json');
-let storeDB = {
-  contacts: {},
-  messages: [],
-  groupMeta: {},
-  msgCount: {}
-};
-
-if (fs.existsSync(storePath)) {
-  try {
-    const data = JSON.parse(fs.readFileSync(storePath, 'utf-8'));
-    storeDB = { ...storeDB, ...data };
-  } catch (e) {
-    console.log('Error loading store.json:', e);
-  }
+const getGroupAdmins = (participants) => {
+	var admins = []
+	for (let i of participants) {
+		i.admin !== null  ? admins.push(i.id) : ''
+	}
+	return admins
 }
 
-const saveStoreDB = () => {
-  fs.writeFileSync(storePath, JSON.stringify(storeDB, null, 2));
-};
+const getRandom = (ext) => {
+	return `${Math.floor(Math.random() * 10000)}${ext}`
+}
 
-const saveContact = (jid, name) => {
-  storeDB.contacts[jid] = name;
-  saveStoreDB();
-};
+const h2k = (eco) => {
+	var lyrik = ['', 'K', 'M', 'B', 'T', 'P', 'E']
+	var ma = Math.log10(Math.abs(eco)) / 3 | 0
+	if (ma == 0) return eco
+	var ppo = lyrik[ma]
+	var scale = Math.pow(10, ma * 3)
+	var scaled = eco / scale
+	var formatt = scaled.toFixed(1)
+	if (/\.0$/.test(formatt))
+		formatt = formatt.substr(0, formatt.length - 2)
+	return formatt + ppo
+}
 
-const loadMessage = (msg) => {
-  storeDB.messages.push(msg);
-  if (storeDB.messages.length > 1000) storeDB.messages.shift();
-  saveStoreDB();
-};
+const isUrl = (url) => {
+	return url.match(
+		new RegExp(
+			/https?:\/\/(www\.)?[-a-zA-Z0-9@:%.+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%+.~#?&/=]*)/,
+			'gi'
+		)
+	)
+}
 
-const getName = (jid) => {
-  return storeDB.contacts[jid] || jid.split('@')[0];
-};
+const Json = (string) => {
+    return JSON.stringify(string, null, 2)
+}
 
-const getChatSummary = () => {
-  return storeDB.messages.length;
-};
+const runtime = (seconds) => {
+	seconds = Number(seconds)
+	var d = Math.floor(seconds / (3600 * 24))
+	var h = Math.floor(seconds % (3600 * 24) / 3600)
+	var m = Math.floor(seconds % 3600 / 60)
+	var s = Math.floor(seconds % 60)
+	var dDisplay = d > 0 ? d + (d == 1 ? ' day, ' : ' days, ') : ''
+	var hDisplay = h > 0 ? h + (h == 1 ? ' hour, ' : ' hours, ') : ''
+	var mDisplay = m > 0 ? m + (m == 1 ? ' minute, ' : ' minutes, ') : ''
+	var sDisplay = s > 0 ? s + (s == 1 ? ' second' : ' seconds') : ''
+	return dDisplay + hDisplay + mDisplay + sDisplay;
+}
 
-const saveGroupMetadata = (jid, meta) => {
-  storeDB.groupMeta[jid] = meta;
-  saveStoreDB();
-};
+const sleep = async(ms) => {
+	return new Promise(resolve => setTimeout(resolve, ms))
+}
 
-const getGroupMetadata = (jid) => {
-  return storeDB.groupMeta[jid];
-};
+const fetchJson = async (url, options) => {
+    try {
+        options ? options : {}
+        const res = await axios({
+            method: 'GET',
+            url: url,
+            headers: {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/95.0.4638.69 Safari/537.36'
+            },
+            ...options
+        })
+        return res.data
+    } catch (err) {
+        return err
+    }
+}
 
-const saveMessageCount = (jid, count) => {
-  storeDB.msgCount[jid] = count;
-  saveStoreDB();
-};
-
-const getInactiveGroupMembers = (groupJid) => {
-  const members = (storeDB.groupMeta[groupJid]?.participants || []).map(p => p.id);
-  return members.filter(jid => !storeDB.msgCount[jid] || storeDB.msgCount[jid] < 5);
-};
-
-const getGroupMembersMessageCount = (groupJid) => {
-  return storeDB.msgCount;
-};
-
-const saveMessage = (msg) => {
-  const entry = {
-    key: msg.key,
-    message: msg.message,
-    pushName: msg.pushName,
-    participant: msg.key.participant
-  };
-  storeDB.messages.push(entry);
-  if (storeDB.messages.length > 500) storeDB.messages.shift();
-  saveStoreDB();
-};
-
-// === EXPORT ALL ===
-module.exports = {
-  AntiDelDB,
-  initializeAntiDeleteSettings,
-  setAnti,
-  getAnti,
-  getAllAntiDeleteSettings,
-  saveContact,
-  loadMessage,
-  getName,
-  getChatSummary,
-  saveGroupMetadata,
-  getGroupMetadata,
-  saveMessageCount,
-  getInactiveGroupMembers,
-  getGroupMembersMessageCount,
-  saveMessage
-};
+module.exports = { getBuffer, getGroupAdmins, getRandom, h2k, isUrl, Json, runtime, sleep , fetchJson}
