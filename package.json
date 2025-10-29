@@ -4,10 +4,8 @@
   "description": "A WhatsApp Bot Created By FAHEEM",
   "main": "index.js",
   "scripts": {
-    "start": "pm2 start index.js --deep-monitoring --attach --name FAHEEM-AI",
-    "stop": "pm2 stop FAHEEM-AI",
-    "restart": "pm2 restart FAHEEM-AI"
-  },
+  "start": "pm2 start index.js --name FAHEEM-AI"
+},
   "dependencies": {
     "@whiskeysockets/baileys": "github:Jeliostarr/DEV-Baileys",
     "@adiwajshing/keyed-db": "^0.2.4",
