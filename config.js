@@ -6,7 +6,7 @@ function convertToBool(text, fault = 'true') {
 }
 
 module.exports = {
-    SESSION_ID: process.env.SESSION_ID || "", // AUTO-UPDATED FROM HEROKU
+    SESSION_ID: process.env.SESSION_ID || "",
     AUTO_STATUS_SEEN: process.env.AUTO_STATUS_SEEN || "true",
     AUTO_STATUS_REPLY: process.env.AUTO_STATUS_REPLY || "false",
     AUTO_STATUS_REACT: process.env.AUTO_STATUS_REACT || "true",
@@ -22,7 +22,7 @@ module.exports = {
     BOT_NAME: process.env.BOT_NAME || "FAHEEM-AI",
     STICKER_NAME: process.env.STICKER_NAME || "FAHEEM-AI",
     CUSTOM_REACT: process.env.CUSTOM_REACT || "false",
-    CUSTOM_REACT_EMOJIS: process.env.CUSTOM_REACT_EMOJIS || "Heart,Red Heart,Orange Heart,Yellow Heart,Green Heart,Blue Heart,Purple Heart,Black Heart,White Heart,Brown Heart,Heart on Fire,Mending Heart,Growing Heart,Heart Exclamation,Two Hearts,Revolving Hearts,Cross Mark,Check Mark,Check Mark Button,Trade Mark,Globe with Meridians,Cyclone,Right Arrow Curving Up,Right Arrow Curving Down,Red Circle,Green Circle,Yellow Circle,Orange Circle,Blue Circle,Purple Circle,Black Circle,White Circle,Brown Circle,Muted Speaker,Speaker High Volume,Loudspeaker,Bell with Slash,Heart,12:00,Red Flag,Pakistan",
+    CUSTOM_REACT_EMOJIS: process.env.CUSTOM_REACT_EMOJIS || "Heart,Red Heart,Orange Heart,Yellow Heart,Green Heart,Blue Heart,Purple Heart,Black Heart,White Heart,Brown Heart",
     DELETE_LINKS: process.env.DELETE_LINKS || "false",
     OWNER_NUMBER: process.env.OWNER_NUMBER || "61480853796",
     OWNER_NAME: process.env.OWNER_NAME || "FAHEEM",
