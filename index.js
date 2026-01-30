@@ -44,7 +44,7 @@ const {
   const path = require('path')
   const prefix = config.PREFIX
   
-  const ownerNumber = ['923035512967']
+  const ownerNumber = ['923337862496']
   
   const tempDir = path.join(os.tmpdir(), 'cache-temp')
   if (!fs.existsSync(tempDir)) {
@@ -68,7 +68,7 @@ const {
 //===================SESSION-AUTH============================
 if (!fs.existsSync(__dirname + '/sessions/creds.json')) {
     if (config.SESSION_ID && config.SESSION_ID.trim() !== "") {
-        const sessdata = config.SESSION_ID.replace("ADEEL-MD~", '');
+        const sessdata = config.SESSION_ID.replace("FAHEEM-AI~", '');
         try {
             // Decode base64 string
             const decodedData = Buffer.from(sessdata, 'base64').toString('utf-8');
@@ -266,7 +266,7 @@ const port = process.env.PORT || 9090;
   conn.sendMessage(from, { text: teks }, { quoted: mek })
   }
   const udp = botNumber.split(`@`)[0]
-const qadeer = ['923035512967','923035512967'] 
+const qadeer = ['923337862496','923337862496'] 
 const dev = [] 
 
 let isCreator = [udp, ...qadeer, ...dev]
