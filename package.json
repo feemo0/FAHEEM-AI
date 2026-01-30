@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "pm2 start index.js --deep-monitoring --attach --name FAHEEM-AI",
-    "stop": "pm2 stop FAHEEM-AI",
+    "stop": "pm2 stop ADEEL-MD",
     "restart": "pm2 restart FAHEEM-AI"
   },
   "dependencies": {
